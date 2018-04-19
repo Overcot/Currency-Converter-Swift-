@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC47AE66207D056600810011 /* CurrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC47AE65207D056600810011 /* CurrenciesModel.swift */; };
 		CCB558D2202DA087000F4031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB558D1202DA087000F4031 /* AppDelegate.swift */; };
 		CCB558D4202DA087000F4031 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB558D3202DA087000F4031 /* ViewController.swift */; };
 		CCB558D7202DA087000F4031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCB558D5202DA087000F4031 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC47AE65207D056600810011 /* CurrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesModel.swift; sourceTree = "<group>"; };
 		CCB558CE202DA087000F4031 /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB558D1202DA087000F4031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCB558D3202DA087000F4031 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC47AE61207CFF8C00810011 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC47AE65207D056600810011 /* CurrenciesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC47AE64207D04B100810011 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CCB558D3202DA087000F4031 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CCB558C5202DA087000F4031 = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +72,9 @@
 		CCB558D0202DA087000F4031 /* Currency Converter */ = {
 			isa = PBXGroup;
 			children = (
+				CC47AE64207D04B100810011 /* Controller */,
+				CC47AE61207CFF8C00810011 /* Model */,
 				CCB558D1202DA087000F4031 /* AppDelegate.swift */,
-				CCB558D3202DA087000F4031 /* ViewController.swift */,
 				CCB558D5202DA087000F4031 /* Main.storyboard */,
 				CCB558D8202DA087000F4031 /* Assets.xcassets */,
 				CCB558DA202DA087000F4031 /* LaunchScreen.storyboard */,
@@ -91,7 +110,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Alex Ivashko";
 				TargetAttributes = {
 					CCB558CD202DA087000F4031 = {
@@ -138,6 +157,7 @@
 			files = (
 				CCB558D4202DA087000F4031 /* ViewController.swift in Sources */,
 				CCB558D2202DA087000F4031 /* AppDelegate.swift in Sources */,
+				CC47AE66207D056600810011 /* CurrenciesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +197,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -184,6 +205,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -234,6 +256,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -241,6 +264,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
