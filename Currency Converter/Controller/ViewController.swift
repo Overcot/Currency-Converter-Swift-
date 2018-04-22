@@ -10,8 +10,8 @@ import UIKit
 
 
 // когда запускаем без интернета а потом включаем то при обновлении списков хочется чтобы сохранялись текущие значения в pickerview
-// init launch - нет прописанных валют в лейблах
-// странно стал обновлятся пикер и лейблы когда мы хотим аля одинаковые валюты взять
+// теперь если будет ошибка то она запишется в маленький label, надо чтобы писалась ошибку по центру в label
+// labelы обновляются если инет пропал но не текущее значение используется для данных
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var labelValueToCurrency: UILabel!
@@ -23,6 +23,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var pickerTo: UIPickerView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var labelEqualSign: UILabel!
     
     var currenciesModel = CurrenciesModel()
     
@@ -41,9 +42,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.activityIndicator.hidesWhenStopped = true
         
         updateList()
-
-
         
+        self.labelNameFromCurrency.text = getBaseCurrency()
+        self.labelNameToCurrency.text = getToCurrency()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()        // Dispose of any resources that can be recreated.
@@ -68,28 +69,25 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.labelValueToCurrency.text = " "
-        if pickerView === pickerFrom {
-            self.labelNameFromCurrency.text = currenciesModel.currencies[row]
-        }
-        if pickerView == pickerTo {
-            self.labelNameToCurrency.text = currenciesModel.currencies[row]
-        }
+        self.labelEqualSign.isHidden = true
         self.activityIndicator.startAnimating()
         if needToUpdateList {
-            updateList()
-            self.pickerFrom.reloadAllComponents()
-            self.pickerTo.reloadAllComponents()
+            self.updateList()
+            needToUpdateList = false
         }
+        self.pickerFrom.reloadAllComponents()
+        self.pickerTo.reloadAllComponents()
+        
+        self.labelNameFromCurrency.text = getBaseCurrency()
+        self.labelNameToCurrency.text = getToCurrency()
+        
         self.requestCurrentCurrencyRate()
     }
 
     func requestCurrentCurrencyRate() {
-
-        let baseCurrencyIndex = self.pickerFrom.selectedRow(inComponent: 0)
-        let toCurrencyIndex = self.pickerTo.selectedRow(inComponent: 0)
         
-        let baseCurrency = currenciesModel.currencies[baseCurrencyIndex]
-        let toCurrency = currenciesModel.currenciesExcept(number : pickerFrom.selectedRow(inComponent: 0))[toCurrencyIndex]
+        let baseCurrency = getBaseCurrency()
+        let toCurrency = getToCurrency()
         
         currenciesModel.getCurrencyRate(baseCurrency: baseCurrency, toCurrency: toCurrency)  {
             [weak self] result in
@@ -98,11 +96,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 switch result {
                 case .success(let currencyRate):
                     strongSelf.labelValueToCurrency.text = currencyRate
+                    
                 case .error(let error):
                     strongSelf.labelValueToCurrency.text = error.localizedDescription
                     strongSelf.needToUpdateList = true
                 }
                 strongSelf.activityIndicator.stopAnimating()
+                strongSelf.labelEqualSign.isHidden = false
+                strongSelf.labelNameFromCurrency.text = baseCurrency
+                strongSelf.labelNameToCurrency.text = toCurrency
             }
         }
     }
@@ -125,7 +127,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 }
                 strongSelf.needToUpdateList = true
             }
-
         }
+    }
+    
+    private func getBaseCurrency() -> String {
+        let baseCurrencyIndex = self.pickerFrom.selectedRow(inComponent: 0)
+        let baseCurrency = currenciesModel.currencies[baseCurrencyIndex]
+        return baseCurrency
+    }
+    private func getToCurrency() -> String {
+        let toCurrencyIndex = self.pickerTo.selectedRow(inComponent: 0)
+        let toCurrency = currenciesModel.currenciesExcept(number : pickerFrom.selectedRow(inComponent: 0))[toCurrencyIndex]
+        return toCurrency
     }
 }
