@@ -8,9 +8,16 @@
 
 import UIKit
 
+
+// когда запускаем без интернета а потом включаем то при обновлении списков хочется чтобы сохранялись текущие значения в pickerview
+// init launch - нет прописанных валют в лейблах
+// странно стал обновлятся пикер и лейблы когда мы хотим аля одинаковые валюты взять
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var labelValueToCurrency: UILabel!
+    
+    @IBOutlet weak var labelNameFromCurrency: UILabel!
+    @IBOutlet weak var labelNameToCurrency: UILabel!
     
     @IBOutlet weak var pickerFrom: UIPickerView!
     @IBOutlet weak var pickerTo: UIPickerView!
@@ -18,6 +25,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var currenciesModel = CurrenciesModel()
+    
+    var needToUpdateList = false
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -30,25 +40,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         self.activityIndicator.hidesWhenStopped = true
         
-        self.activityIndicator.startAnimating()
-        self.label.text = " "
+        updateList()
+
 
         
-        currenciesModel.createCurrencyList { (error) in
-            if let error = error {
-                DispatchQueue.main.async {
-                    print(error.localizedDescription)
-                    //self.label.text = error.localizedDescription
-                    //self.activityIndicator.stopAnimating()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.pickerFrom.delegate = self
-                    self.pickerTo.delegate = self
-                    self.requestCurrentCurrencyRate()
-                }
-            }
-        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()        // Dispose of any resources that can be recreated.
@@ -58,7 +53,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView === pickerTo {
             return currenciesModel.currenciesExcept(number: pickerFrom.selectedRow(inComponent: 0)).count
         }
@@ -72,7 +67,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return currenciesModel.currencies[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.labelValueToCurrency.text = " "
         if pickerView === pickerFrom {
+            self.labelNameFromCurrency.text = currenciesModel.currencies[row]
+        }
+        if pickerView == pickerTo {
+            self.labelNameToCurrency.text = currenciesModel.currencies[row]
+        }
+        self.activityIndicator.startAnimating()
+        if needToUpdateList {
+            updateList()
+            self.pickerFrom.reloadAllComponents()
             self.pickerTo.reloadAllComponents()
         }
         self.requestCurrentCurrencyRate()
@@ -87,14 +92,40 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         let toCurrency = currenciesModel.currenciesExcept(number : pickerFrom.selectedRow(inComponent: 0))[toCurrencyIndex]
         
         currenciesModel.getCurrencyRate(baseCurrency: baseCurrency, toCurrency: toCurrency)  {
-            [weak self] (value) in
+            [weak self] result in
             DispatchQueue.main.async {
-            if let strongSelf = self {
-                strongSelf.label.text = value
-                strongSelf.activityIndicator.stopAnimating()
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let currencyRate):
+                    strongSelf.labelValueToCurrency.text = currencyRate
+                case .error(let error):
+                    strongSelf.labelValueToCurrency.text = error.localizedDescription
+                    strongSelf.needToUpdateList = true
                 }
+                strongSelf.activityIndicator.stopAnimating()
             }
         }
+    }
+    func updateList() {
+        currenciesModel.createCurrencyList {
+            [weak self] result in
+            guard let strongSelf = self else { return }
+            
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    strongSelf.pickerFrom.reloadAllComponents()
+                    strongSelf.pickerTo.reloadAllComponents()
+                    strongSelf.requestCurrentCurrencyRate()
+                }
+            case .error(let error):
+                DispatchQueue.main.async {
+                    strongSelf.labelValueToCurrency.text = error.localizedDescription
+                    strongSelf.activityIndicator.stopAnimating()
+                }
+                strongSelf.needToUpdateList = true
+            }
 
+        }
     }
 }

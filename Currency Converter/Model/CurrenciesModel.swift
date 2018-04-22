@@ -11,12 +11,14 @@ enum ModelError: Error {
     case noRates
 }
 
+// хз как не харккодить валюты
 
 class CurrenciesModel {
     var currencies : [String] =  ["RUB", "EUR", "USD"]
-    
     // MARK: NEED TO UPDATE API REQUEST
     var accessKey = "90cb887181e63c6dac1aeab215e4bd4c"
+    
+
     func printCurrencyList() {
         print("Currency List - ", currencies)
     }
@@ -27,32 +29,27 @@ class CurrenciesModel {
         return currenciesExceptBase
     }
 
-    func createCurrencyList(completion: @escaping (Error?) -> Void) {
+    func createCurrencyList(completion: @escaping (Result<[String]>) -> Void) {
         requestCurrencyList() { [weak self] result in
             guard let strongSelf = self else { return }
             
             switch result {
             case .success(let currencies):
                 strongSelf.currencies = currencies
-                completion(nil)
-
-            case .error(let error):
-                completion(error)
+            case .error(_):
+                break
             }
+            completion(result)
+
         }
     }
     
     
-    func getCurrencyRate(baseCurrency: String, toCurrency: String, completion: @escaping (String) -> Void) {
+    func getCurrencyRate(baseCurrency: String, toCurrency: String, completion: @escaping (Result<String>) -> Void) {
         requestBaseCurrencyRate(baseCurrency: baseCurrency, toCurrency: toCurrency) {
             result in
-            switch result {
-            case .success(let currencyRate):
-                completion(currencyRate)
-            case .error(let error):
-                completion(error.localizedDescription)
-            }
-            
+            completion(result)
+
         }
     }
     
@@ -67,6 +64,7 @@ class CurrenciesModel {
             guard let strongSelf = self else { return }
             if let error = error {
                 completion(.error(error))
+                return
             }
             guard let data = dataReceived else {
                 completion(.error(ModelError.noData))
@@ -79,9 +77,9 @@ class CurrenciesModel {
         dataTask.resume()
     }
     
-    private func parseCurrencyResponseList(data: Data?) -> (Result<[String]>) {
+    private func parseCurrencyResponseList(data: Data) -> (Result<[String]>) {
         do {
-            let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             guard let parsedJSON = json else {
                 return .error(ModelError.parseError)
             }
@@ -105,6 +103,7 @@ class CurrenciesModel {
             guard let strongSelf = self else { return }
             if let error = error {
                 completion(.error(error))
+                return
             }
             guard let data = dataReceived else {
                 completion(.error(ModelError.noData))
@@ -116,9 +115,9 @@ class CurrenciesModel {
         dataTask.resume()
     }
     
-    private func parseCurrencyRatesResponse(data: Data?, toCurrency: String) -> (Result<String>){
+    private func parseCurrencyRatesResponse(data: Data, toCurrency: String) -> (Result<String>){
         do {
-            let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             guard let parsedJSON = json else {
                 return .error(ModelError.parseError)
             }
