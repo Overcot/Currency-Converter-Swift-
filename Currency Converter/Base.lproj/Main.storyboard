@@ -19,12 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEI-YU-5TP" userLabel="ErrorLabel">
-                                <rect key="frame" x="0.0" y="190" width="375" height="20.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Vms-IN-0aP">
                                 <rect key="frame" x="177.5" y="123" width="20" height="20.5"/>
                                 <constraints>
@@ -73,13 +67,13 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="x2g-o7-NHH" userLabel="2 pickers">
-                                <rect key="frame" x="0.0" y="220.5" width="375" height="446.5"/>
+                                <rect key="frame" x="0.0" y="163.5" width="375" height="503.5"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haI-yo-Vye">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="446.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="503.5"/>
                                     </pickerView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFB-W4-ryr">
-                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="446.5"/>
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="503.5"/>
                                     </pickerView>
                                 </subviews>
                                 <constraints>
@@ -99,23 +93,19 @@
                             <constraint firstItem="sbb-ci-wNU" firstAttribute="width" secondItem="heX-yX-4wm" secondAttribute="width" id="0b0-gJ-g4p"/>
                             <constraint firstItem="sbb-ci-wNU" firstAttribute="centerY" secondItem="heX-yX-4wm" secondAttribute="centerY" id="BTG-cL-hcH"/>
                             <constraint firstItem="x2g-o7-NHH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FfF-2f-Qq9"/>
-                            <constraint firstItem="mEI-YU-5TP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GOV-Bb-rYh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x2g-o7-NHH" secondAttribute="bottom" id="LX1-Ue-xLD"/>
                             <constraint firstItem="heX-yX-4wm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QVo-7r-pkn"/>
                             <constraint firstItem="x2g-o7-NHH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WX2-cR-1U4"/>
                             <constraint firstItem="Vms-IN-0aP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.4" id="X6t-3J-BOf"/>
                             <constraint firstItem="USM-29-jEw" firstAttribute="centerX" secondItem="Vms-IN-0aP" secondAttribute="centerX" id="YKP-bY-FxL"/>
-                            <constraint firstItem="mEI-YU-5TP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zbf-8G-RhG"/>
                             <constraint firstItem="sbb-ci-wNU" firstAttribute="leading" secondItem="Vms-IN-0aP" secondAttribute="trailing" id="eQj-Xr-0iq"/>
                             <constraint firstItem="Vms-IN-0aP" firstAttribute="centerY" secondItem="heX-yX-4wm" secondAttribute="centerY" id="gYt-Pq-XgV"/>
                             <constraint firstItem="Vms-IN-0aP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gv4-7z-zeZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x2g-o7-NHH" secondAttribute="bottom" id="hRf-4y-lQX"/>
                             <constraint firstItem="sbb-ci-wNU" firstAttribute="height" secondItem="heX-yX-4wm" secondAttribute="height" id="ky3-ae-RFe"/>
-                            <constraint firstItem="mEI-YU-5TP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.6" id="lqa-Lv-WDL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mEI-YU-5TP" secondAttribute="trailing" id="pUD-lm-3Lx"/>
+                            <constraint firstItem="x2g-o7-NHH" firstAttribute="top" secondItem="Vms-IN-0aP" secondAttribute="bottom" constant="20" id="lu3-89-p8C"/>
                             <constraint firstItem="Vms-IN-0aP" firstAttribute="height" secondItem="heX-yX-4wm" secondAttribute="height" id="pfl-wG-guI"/>
                             <constraint firstItem="Vms-IN-0aP" firstAttribute="leading" secondItem="heX-yX-4wm" secondAttribute="trailing" id="qYS-g3-XKd"/>
                             <constraint firstItem="USM-29-jEw" firstAttribute="centerY" secondItem="Vms-IN-0aP" secondAttribute="centerY" id="riV-7o-iZZ"/>
-                            <constraint firstItem="x2g-o7-NHH" firstAttribute="top" secondItem="mEI-YU-5TP" secondAttribute="bottom" constant="10" id="t5z-Ky-x2H"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sbb-ci-wNU" secondAttribute="trailing" id="zua-rn-QA1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -125,6 +115,7 @@
                         <outlet property="labelEqualSign" destination="USM-29-jEw" id="jTW-UM-0Mu"/>
                         <outlet property="labelNameFromCurrency" destination="QGJ-bY-ag3" id="Nqe-SF-B3B"/>
                         <outlet property="labelNameToCurrency" destination="sJC-LN-qhn" id="0a5-4G-0zV"/>
+                        <outlet property="labelValueFromCurrency" destination="wd7-IO-f2K" id="HR4-cl-XWS"/>
                         <outlet property="labelValueToCurrency" destination="oQA-lB-MGw" id="UOW-kj-XJK"/>
                         <outlet property="pickerFrom" destination="haI-yo-Vye" id="EPW-p0-r9n"/>
                         <outlet property="pickerTo" destination="PFB-W4-ryr" id="sFx-fU-UX3"/>

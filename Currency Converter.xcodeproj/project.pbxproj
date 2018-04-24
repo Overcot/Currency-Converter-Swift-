@@ -13,6 +13,7 @@
 		CCB558D7202DA087000F4031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCB558D5202DA087000F4031 /* Main.storyboard */; };
 		CCB558D9202DA087000F4031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB558D8202DA087000F4031 /* Assets.xcassets */; };
 		CCB558DC202DA087000F4031 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCB558DA202DA087000F4031 /* LaunchScreen.storyboard */; };
+		CCE0C3EE208DD24800A59DBB /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0C3ED208DD24800A59DBB /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CCB558D8202DA087000F4031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCB558DB202DA087000F4031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCB558DD202DA088000F4031 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCE0C3ED208DD24800A59DBB /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				CC47AE65207D056600810011 /* CurrenciesModel.swift */,
+				CCE0C3ED208DD24800A59DBB /* Network.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			files = (
 				CCB558D4202DA087000F4031 /* ViewController.swift in Sources */,
 				CCB558D2202DA087000F4031 /* AppDelegate.swift in Sources */,
+				CCE0C3EE208DD24800A59DBB /* Network.swift in Sources */,
 				CC47AE66207D056600810011 /* CurrenciesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
