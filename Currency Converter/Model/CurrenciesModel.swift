@@ -12,13 +12,14 @@ enum ModelError: Error {
 }
 
 class CurrenciesModel {
-    var currencies : [String] =  []
-    
-    let networkManager = NetworkManager()
-
-    func printCurrencyList() {
-        print("Currency List - ", currencies)
+    var currencies : [String]
+    let networkManager : NetworkManager
+    init () {
+        self.currencies = []
+        self.networkManager = NetworkManager()
     }
+    
+
     func currenciesExcept(number : Int) -> [String] {
         var currenciesExceptBase = currencies
         currenciesExceptBase.remove(at: number)
