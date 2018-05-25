@@ -8,10 +8,11 @@
 
 import Foundation
 
-
-
-
-class BaseParser {
+protocol ParseProtocol {
+    associatedtype T
+    func parse(data: Data) -> Result<T>
+}
+extension ParseProtocol {
     func parseJSON(data: Data) -> Result<[String: Any]> {
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
@@ -25,26 +26,26 @@ class BaseParser {
     }
 }
 
-class ParserCurrencies : BaseParser {
+
+class CurrenciesParser: ParseProtocol {
+
     func parse(data: Data) -> Result<[String]> {
-        let result = super.parseJSON(data: data)
+        let result = parseJSON(data: data)
         switch result {
             case .success(let parsedJSON):
                 guard let rates = parsedJSON["results"] as? [String: Any] else {
                     return .error(ModelError.noRates)
                 }
                 return .success(Array(rates.keys).sorted())
-            
             case .error(let error):
                 return .error(error)
         }
     }
 }
 
-class ParserRate : BaseParser {
-    
+class RateParser: ParseProtocol {
     func parse(data: Data) -> Result<Double> {
-        let result = super.parseJSON(data: data)
+        let result = parseJSON(data: data)
         switch result {
             case .success(let parsedJSON):
                 guard let results = parsedJSON["results"] as? [String: Any] else {
@@ -59,6 +60,6 @@ class ParserRate : BaseParser {
                 return .success(rate)
             case .error(let error):
                 return .error(error)
-            }
+        }
     }
 }

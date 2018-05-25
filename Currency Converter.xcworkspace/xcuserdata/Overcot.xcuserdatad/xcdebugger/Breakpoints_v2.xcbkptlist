@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Currency Converter/Model/CurrenciesModel.swift"
+            timestampString = "548370133.296114"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Currency Converter/Controller/ViewModel.swift"
+            timestampString = "548968565.931837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ViewModel"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Currency_Converter.ViewModel.deinit"
+                  moduleName = "Currency Converter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Overcot/Documents/Code/Xcode%20App%20Development/Currency%20Converter/Currency%20Converter/Controller/ViewModel.swift"
+                  timestampString = "548359373.710706"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Currency_Converter.ViewModel.__deallocating_deinit"
+                  moduleName = "Currency Converter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Overcot/Documents/Code/Xcode%20App%20Development/Currency%20Converter/Currency%20Converter/Controller/ViewModel.swift"
+                  timestampString = "548359373.715883"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Currency_Converter.ViewModel.__allocating_init() -&gt; Currency_Converter.ViewModel"
+                  moduleName = "Currency Converter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Overcot/Documents/Code/Xcode%20App%20Development/Currency%20Converter/Currency%20Converter/Controller/ViewModel.swift"
+                  timestampString = "548359373.7208149"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Currency_Converter.ViewModel.init() -&gt; Currency_Converter.ViewModel"
+                  moduleName = "Currency Converter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Overcot/Documents/Code/Xcode%20App%20Development/Currency%20Converter/Currency%20Converter/Controller/ViewModel.swift"
+                  timestampString = "548359373.734682"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Currency Converter/Controller/MainScreenViewController.swift"
+            timestampString = "548968565.9319921"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "errorHandle(error:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
